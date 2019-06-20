@@ -36,7 +36,6 @@ public class TasksApp {
 
     public static IntStream pseudoRandomStream(int seed) {
         return IntStream.iterate(seed, n -> ((n * n) / 10 % 1000));
-        return stream;
     }
 
     public static int mid(int number) {
@@ -66,6 +65,5 @@ public class TasksApp {
             result += f.applyAsDouble(a + step * (i + 0.5));
         }
         return result * step;
-        return result;
     }
 }
