@@ -38,25 +38,6 @@ public class TasksApp {
         return IntStream.iterate(seed, n -> ((n * n) / 10 % 1000));
     }
 
-    public static int mid(int number) {
-        int digitNumber = 10;
-        String stringNumbers = "";
-        final int CONST = 10000;
-        if (number < digitNumber) {
-            System.out.println("Your number should be more than 10.");
-        }
-        if (number > CONST) {
-            return number % CONST / 10;
-        } else {
-            while (number >= digitNumber && number < CONST) {
-                stringNumbers += Integer.toString(number / digitNumber);
-                number = 0;
-                digitNumber *= 10;
-            }
-            return Integer.parseInt(stringNumbers);
-        }
-    }
-
     public static double integrate(DoubleUnaryOperator f, double a, double b) {
         int n = 1_000_000;
         double result = 0;
