@@ -19,7 +19,7 @@ public class TasksApp {
         System.out.println(safeStringLength.apply("")); //0
         //Task 2
         System.out.println("Task 2: ");
-        pseudoRandomStream(13).mapToObj(x -> x + " ").forEach(System.out::print);
+        pseudoRandomStream(13).forEach(s -> System.out.print(s + " "));
         //Task 3
         System.out.println("\nTask 3: ");
         System.out.println(integrate(x -> 1, 0, 10)); //10.0
@@ -35,7 +35,7 @@ public class TasksApp {
     }
 
     public static IntStream pseudoRandomStream(int seed) {
-        IntStream stream = IntStream.iterate(seed, n -> mid(n * n)).limit(8);
+        return IntStream.iterate(seed, n -> ((n * n) / 10 % 1000));
         return stream;
     }
 
@@ -59,13 +59,13 @@ public class TasksApp {
     }
 
     public static double integrate(DoubleUnaryOperator f, double a, double b) {
-        int n = 1000000;
+        int n = 1_000_000;
         double result = 0;
         double step = (b - a) / n;
-        for (int i = 0; i < 1e6; i++) {
+        for (int i = 0; i < n; i++) {
             result += f.applyAsDouble(a + step * (i + 0.5));
         }
-        result *= step;
+        return result * step;
         return result;
     }
 }
